@@ -64,6 +64,18 @@ The `stints_per_person` measure may reflect facility transfers, repeated detenti
 - Examined violent and nonviolent conviction classifications within the convicted-criminal category.
 - Calculated median facility-stint duration using records with available duration information.
 
+### Filling Missing County Information
+
+The original dataset contained 179,640 records with missing county information.
+
+I first attempted to fill missing counties using the Deportation Data Project's facility-location dataset. I then used existing county information from matching city-state combinations, excluding locations associated with multiple recorded counties.
+
+For the remaining missing values, I used the Vera Institute's facility-location lookup, excluding facility codes with conflicting county assignments.
+
+Using these methods, I filled 178,678 missing county values, leaving 962 records unresolved. All remaining records were associated with facility codes indicating Guantánamo Bay, Cuba, which does not belong to a U.S. county.
+
+**Limitation:** Some county values were inferred from city-state matches rather than verified facility addresses. These assignments should be reviewed before conducting county-level geographic analysis.
+
 The monthly distinct-person calculation excludes missing identifiers. Consequently, record counts in `monthly_stints.csv` may be slightly lower than the total detention-stint counts in `monthly_all.csv`.
 
 ## Key Findings
