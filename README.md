@@ -90,7 +90,7 @@ In particular:
 
 ## Tools Used
 
-- **Python:** pandas and NumPy for data preparation and analysis.
+- **Python:** pandas for data preparation and analysis.
 - **Datawrapper:** Interactive charts and visualizations.
 - **GitHub:** Dataset documentation and project sharing.
 
