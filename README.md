@@ -74,7 +74,21 @@ For the remaining missing values, I used the Vera Institute's facility-location 
 
 Using these methods, I filled 178,678 missing county values, leaving 962 records unresolved. All remaining records were associated with facility codes indicating Guantánamo Bay, Cuba, which does not belong to a U.S. county.
 
-**Limitation:** Some county values were inferred from city-state matches rather than verified facility addresses. These assignments should be reviewed before conducting county-level geographic analysis.
+Assigning County FIPS Codes
+
+To prepare the data for county-level analysis, I used the U.S. Census Bureau's county reference file to assign five-digit Federal Information Processing Standards (FIPS) codes based on state and county names.
+
+I standardized county names to account for differences in spelling and naming conventions, including accented characters, Puerto Rico's municipios, Virginia's independent cities, and Alaska's boroughs. I also accounted for Connecticut's newer planning-region boundaries.
+
+During validation, I identified an incorrect county assignment for the Bowling Green Hold Room in Kentucky. I corrected the county from Caroline to Warren and assigned the corresponding FIPS code.
+
+After these adjustments, 3,201,355 of the 3,202,317 records (99.97%) had county FIPS codes. The remaining 962 records were associated with Guantánamo Bay and were left without FIPS codes.
+
+**Limitations:**
+
+These methods improve geographic coverage but do not independently verify every facility's county assignment. In particular, counties inferred from city-state combinations may contain inaccuracies. County-level findings should therefore be interpreted with this limitation in mind. Facility location also does not necessarily indicate where an individual lived or was apprehended.
+
+Some county values were inferred from city-state matches rather than verified facility addresses. These assignments should be reviewed before conducting county-level geographic analysis.
 
 The monthly distinct-person calculation excludes missing identifiers. Consequently, record counts in `monthly_stints.csv` may be slightly lower than the total detention-stint counts in `monthly_all.csv`.
 
