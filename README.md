@@ -8,11 +8,41 @@ Using publicly available detention records, I analyzed changes in facility book-
 
 The goal is to understand what changed over time while distinguishing between the number of detention records and the number of individuals represented in those records.
 
-## Data Source
+### Data Sources
 
-The data comes from the [Deportation Data Project](https://deportationdata.org/), a research initiative at UC Berkeley and UCLA that makes government immigration enforcement records available to the public.
+**1. Deportation Data Project — ICE Detention Records**
 
-The original ICE records were obtained through Freedom of Information Act (FOIA) litigation and released publicly on August 24, 2026.
+- Source: [Deportation Data Project — Processed ICE Data](https://deportationdata.org/data/processed/ice)
+- Dataset: `detention-stints-latest.xlsx`
+- Documentation: [ICE Data Codebook](https://deportationdata.org/docs/ice/codebook.html)
+
+This is the primary dataset used in the analysis. It contains individual detention-facility records obtained from U.S. Immigration and Customs Enforcement (ICE) through Freedom of Information Act (FOIA) requests and processed by the Deportation Data Project.
+
+The analysis focuses on detention records from October 2022 through July 2026.
+
+**2. Deportation Data Project — Detention Facility Locations**
+
+- Source: [ICE Detention Facility Locations](https://ice-detention-facilities.apps.deportationdata.org/)
+- Dataset: `detention-facilities_filtered.xlsx`
+- Documentation: [Facility Data Codebook](https://deportationdata.org/docs/ice/codebook-facilities.html)
+
+Used to identify detention facility locations and attempt to fill missing county information using facility codes.
+
+**3. Vera Institute of Justice — ICE Detention Trends**
+
+- Source: [Vera Institute GitHub Repository](https://github.com/vera-institute/ice-detention-trends)
+- Dataset: [Facility Metadata (`facilities.csv`)](https://raw.githubusercontent.com/vera-institute/ice-detention-trends/main/metadata/facilities.csv)
+
+Used as a supplementary reference to fill missing county information based on detention facility codes. Facility codes with conflicting county assignments were excluded from the lookup.
+
+**4. U.S. Census Bureau — County FIPS Reference**
+
+- Source: [2020 National County Reference File](https://www2.census.gov/geo/docs/reference/codes2020/national_county2020.txt)
+- Dataset: `national_county2020.txt`
+
+Used to assign five-digit county FIPS codes based on state and county names. Additional geographic name standardization was applied for county-equivalent jurisdictions, including independent cities, municipios, and boroughs. Connecticut's Capitol Planning Region FIPS code was handled separately because it was not included in the 2020 reference.
+
+These geographic reference datasets were used to improve location information and prepare the ICE records for county-level analysis.
 
 **Analysis period:** October 1, 2022 – July 31, 2026.
 
